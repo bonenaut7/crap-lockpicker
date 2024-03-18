@@ -33,7 +33,7 @@ public class Timer {
 		return this.pendingUpdates;
 	}
 	
-	public void resetUpdates() {
+	public void reset() {
 		this.pendingUpdates = 0;
 	}
 }
