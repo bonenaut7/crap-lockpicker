@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.MathUtils;
 // it's just object that contains some string data in arrays
 // StringBlob is being read from files, each new line is each element in the array
 public class StringBlob {
+	public static final StringBlob PLACEHOLDER = new StringBlob(new String[] { "PLACEHOLDER" });
+	
 	private final boolean isEmpty;
 	private final String[] array;
 	
