@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.physics.bullet.Bullet;
 
+import by.fxg.clp.registry.GameRegistry;
 import by.fxg.clp.render.RenderManager;
 import by.fxg.clp.render.canvas.LoadingCanvas;
 import by.fxg.clp.session.GameSession;
@@ -55,6 +56,7 @@ public class Game extends ApplicationAdapter {
 		// TODO complete quests
 		// TODO add serialization for merchant and quests
 		// TODO make models
+		// TODO FIXME find out how to create level from LevelLayout
 		// TODO choose speceditor and add integration
 		// TODO create 3d scene for speceditor levels
 		// TODO add minimal UI to work with
