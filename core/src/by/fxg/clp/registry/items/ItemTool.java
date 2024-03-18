@@ -1,4 +1,4 @@
-package by.fxg.clp.session.items;
+package by.fxg.clp.registry.items;
 
 import by.fxg.clp.util.ResourceTag;
 

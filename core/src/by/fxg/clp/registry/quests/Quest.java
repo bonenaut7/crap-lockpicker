@@ -1,8 +1,8 @@
-package by.fxg.clp.session.quests;
+package by.fxg.clp.registry.quests;
 
 import com.badlogic.gdx.math.RandomXS128;
 
-import by.fxg.clp.session.items.Item;
+import by.fxg.clp.registry.items.Item;
 
 public final class Quest {
 	private boolean isSpecial = false; // Flag that means literally uncancellable permanent tutorial order
@@ -17,14 +17,9 @@ public final class Quest {
 	private QuestData orderData;
 	
 	// Generate tutorial order
-	public Quest() {
-		this.isSpecial = true;
-		this.questSeed0 = 0;
-		this.questSeed1 = 0;
-		this.ownerName = "Matvey \'bonenaut7\'";
-		// FIXME set icon
-		
-		this.revenue = 25; // was 50 in 0.1
+	public Quest(long seed0, long seed1) {
+		this.questSeed0 = seed0;
+		this.questSeed1 = seed1;
 	}
 	
 	// Generate randomly generated order
@@ -39,6 +34,16 @@ public final class Quest {
 		this.questSeed0 = seed0;
 		this.questSeed1 = seed1;
 		
+		// FIXME complete
+	}
+	
+	public static Quest createTutorialQuest() {
+		final Quest quest = new Quest(0, 0);
+		quest.isSpecial = true;
+		quest.ownerName = "Matvey \'bonenaut7\'";
+		// FIXME set icon
+		
+		quest.revenue = 25; // was 50 in 0.1
 	}
 	
 	public Item getRequiredItem() {

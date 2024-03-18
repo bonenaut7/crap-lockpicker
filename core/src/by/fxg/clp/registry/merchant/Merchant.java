@@ -1,4 +1,4 @@
-package by.fxg.clp.session.merchant;
+package by.fxg.clp.registry.merchant;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;

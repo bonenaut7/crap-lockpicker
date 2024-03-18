@@ -1,18 +1,18 @@
-package by.fxg.clp.core;
+package by.fxg.clp.registry;
 
 import java.util.function.Function;
 
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Disposable;
 
-import by.fxg.clp.session.items.Item;
-import by.fxg.clp.session.items.ItemResource;
-import by.fxg.clp.session.items.ItemTool;
+import by.fxg.clp.core.Game;
+import by.fxg.clp.core.ResourceManager;
+import by.fxg.clp.registry.items.Item;
+import by.fxg.clp.registry.items.ItemResource;
+import by.fxg.clp.registry.items.ItemTool;
 import by.fxg.clp.util.ResourceTag;
 
 public class GameRegistry {
 	private static Array<Item> registeredItems = new Array<>();
-	
 	// Merchants
 	
 	

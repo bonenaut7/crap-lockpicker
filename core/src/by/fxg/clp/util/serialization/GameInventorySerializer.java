@@ -6,8 +6,8 @@ import com.esotericsoftware.kryo.Serializer;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
+import by.fxg.clp.registry.items.ItemInstance;
 import by.fxg.clp.session.GameInventory;
-import by.fxg.clp.session.items.ItemInstance;
 
 public class GameInventorySerializer extends Serializer<GameInventory> {
 

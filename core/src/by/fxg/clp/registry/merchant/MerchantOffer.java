@@ -1,4 +1,4 @@
-package by.fxg.clp.session.merchant;
+package by.fxg.clp.registry.merchant;
 
 import by.fxg.clp.render.canvas.merchant.MerchantSubCanvas;
 import by.fxg.clp.session.GameSession;

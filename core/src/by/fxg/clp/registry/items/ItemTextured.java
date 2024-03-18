@@ -1,4 +1,4 @@
-package by.fxg.clp.session.items;
+package by.fxg.clp.registry.items;
 
 public class ItemTextured extends Item {
 	private final String textureName;

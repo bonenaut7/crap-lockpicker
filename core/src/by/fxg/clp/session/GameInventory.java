@@ -5,8 +5,8 @@ import java.util.function.Function;
 
 import com.badlogic.gdx.utils.Array;
 
-import by.fxg.clp.session.items.Item;
-import by.fxg.clp.session.items.ItemInstance;
+import by.fxg.clp.registry.items.Item;
+import by.fxg.clp.registry.items.ItemInstance;
 import by.fxg.clp.util.ResourceTag;
 
 public class GameInventory {	

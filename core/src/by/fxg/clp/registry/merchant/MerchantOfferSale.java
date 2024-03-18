@@ -1,9 +1,9 @@
-package by.fxg.clp.session.merchant;
+package by.fxg.clp.registry.merchant;
 
+import by.fxg.clp.registry.items.ItemInstance;
+import by.fxg.clp.registry.items.ItemTradeable;
 import by.fxg.clp.render.canvas.merchant.MerchantSubCanvas;
 import by.fxg.clp.session.GameSession;
-import by.fxg.clp.session.items.ItemInstance;
-import by.fxg.clp.session.items.ItemTradeable;
 
 public class MerchantOfferSale extends MerchantOffer {
 	private ItemTradeable itemType;

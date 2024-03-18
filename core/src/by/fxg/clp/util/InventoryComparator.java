@@ -2,8 +2,8 @@ package by.fxg.clp.util;
 
 import java.util.Comparator;
 
-import by.fxg.clp.session.items.Item;
-import by.fxg.clp.session.items.ItemInstance;
+import by.fxg.clp.registry.items.Item;
+import by.fxg.clp.registry.items.ItemInstance;
 
 public class InventoryComparator implements Comparator<ItemInstance> {
 	public static final InventoryComparator INSTANCE = new InventoryComparator();

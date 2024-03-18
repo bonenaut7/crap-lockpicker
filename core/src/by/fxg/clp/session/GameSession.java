@@ -9,7 +9,7 @@ import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
 import by.fxg.clp.core.Game;
-import by.fxg.clp.session.quests.Quest;
+import by.fxg.clp.registry.quests.Quest;
 
 public class GameSession {
 	public GameSettings gameSettings;

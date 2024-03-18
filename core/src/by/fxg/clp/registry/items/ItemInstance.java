@@ -1,4 +1,4 @@
-package by.fxg.clp.session.items;
+package by.fxg.clp.registry.items;
 
 import com.badlogic.gdx.math.MathUtils;
 

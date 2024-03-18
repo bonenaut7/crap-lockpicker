@@ -21,10 +21,10 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.utils.Disposable;
 import com.esotericsoftware.kryo.Kryo;
 
+import by.fxg.clp.registry.items.ItemInstance;
 import by.fxg.clp.session.GameInventory;
 import by.fxg.clp.session.GameSession;
 import by.fxg.clp.session.GameSettings;
-import by.fxg.clp.session.items.ItemInstance;
 import by.fxg.clp.util.JarUtils;
 import by.fxg.clp.util.serialization.GameInventorySerializer;
 import by.fxg.clp.util.serialization.GameSessionSerializer;

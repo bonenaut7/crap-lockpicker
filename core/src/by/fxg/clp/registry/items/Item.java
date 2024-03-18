@@ -1,4 +1,4 @@
-package by.fxg.clp.session.items;
+package by.fxg.clp.registry.items;
 
 import java.util.EnumSet;
 
@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import by.fxg.clp.core.Game;
 import by.fxg.clp.core.ResourceManager;
-import by.fxg.clp.session.quests.Quest;
+import by.fxg.clp.registry.quests.Quest;
 import by.fxg.clp.util.ResourceTag;
 
 public abstract class Item {
