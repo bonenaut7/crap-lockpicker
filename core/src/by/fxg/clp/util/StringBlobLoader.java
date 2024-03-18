@@ -1,7 +1,6 @@
 package by.fxg.clp.util;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.nio.charset.StandardCharsets;
@@ -31,7 +30,7 @@ public class StringBlobLoader extends AsynchronousAssetLoader<StringBlob, AssetL
 	public void loadAsync(AssetManager manager, String fileName, FileHandle file, AssetLoaderParameters<StringBlob> parameter) {
 		try {
 			final LineNumberReader reader = new LineNumberReader(new InputStreamReader(file.read(), StandardCharsets.UTF_8));
-			this.array = (String[])reader.lines().toArray();
+			this.array = (String[])reader.lines().toArray(); // TODO allow comments and read manually?
 			reader.close();
 		} catch (IOException ioexception) {
 			ioexception.printStackTrace();
