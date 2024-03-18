@@ -50,7 +50,7 @@ public class ResourceManager implements Disposable {
 		this.assetMarkers.put("obj", Model.class);
 		this.assetMarkers.put("ogg", SoundBuffer.class);
 		this.assetMarkers.put("mp3", SoundBuffer.class);
-		this.assetMarkers.put("sblob", StringBlob.class);
+		this.assetMarkers.put("blob", StringBlob.class);
 		
 		final FileHandleResolver internalResolver = new InternalFileHandleResolver();
 		this.assetManager = new AssetManager();
