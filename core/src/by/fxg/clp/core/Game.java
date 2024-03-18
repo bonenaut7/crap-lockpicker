@@ -50,17 +50,17 @@ public class Game extends ApplicationAdapter {
 		GameRegistry.init();
 		this.gameSession = GameSession.loadGameSession(this.resourceManager.kryo);
 		
-		// + + + add hangman's audio system 'tuning fork'
-		// + + + add logic for merchant offers
-		// FIXME complete merchants
-		// FIXME complete quests
-		// FIXME add serialization for merchant and quests
-		// FIXME make models
-		// FIXME choose speceditor and add integration
-		// FIXME create 3d scene for speceditor levels
-		// FIXME add minimal UI to work with
-		// FIXME first playtest to check physics
-		// FIXME add more FIXME's
+
+		// TODO complete merchants
+		// TODO complete quests
+		// TODO add serialization for merchant and quests
+		// TODO make models
+		// TODO choose speceditor and add integration
+		// TODO create 3d scene for speceditor levels
+		// TODO add minimal UI to work with
+		// TODO first playtest to check physics
+		// TODO add more items
+		// TODO add more TODO's
 	}
 	
 	public void update() {
@@ -90,6 +90,7 @@ public class Game extends ApplicationAdapter {
 		for (int i = 0; i < pendingUpdates; i++) {
 			this.update();
 		}
+		this.timer.reset();
 		
 		this.renderManager.onRender(this.width, this.height, (float)((this.timer.getLastTimerUpdate() - this.lastTickTime) / this.timer.millisPerUpdate));
 	}
