@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -26,6 +27,8 @@ import by.fxg.clp.session.GameInventory;
 import by.fxg.clp.session.GameSession;
 import by.fxg.clp.session.GameSettings;
 import by.fxg.clp.util.JarUtils;
+import by.fxg.clp.util.StringBlob;
+import by.fxg.clp.util.StringBlobLoader;
 import by.fxg.clp.util.serialization.GameInventorySerializer;
 import by.fxg.clp.util.serialization.GameSessionSerializer;
 import by.fxg.clp.util.serialization.GameSettingsSerializer;
@@ -47,9 +50,12 @@ public class ResourceManager implements Disposable {
 		this.assetMarkers.put("obj", Model.class);
 		this.assetMarkers.put("ogg", SoundBuffer.class);
 		this.assetMarkers.put("mp3", SoundBuffer.class);
+		this.assetMarkers.put("sblob", StringBlob.class);
 		
+		final FileHandleResolver internalResolver = new InternalFileHandleResolver();
 		this.assetManager = new AssetManager();
-		this.assetManager.setLoader(SoundBuffer.class, new SoundBufferLoader(new InternalFileHandleResolver()));
+		this.assetManager.setLoader(SoundBuffer.class, new SoundBufferLoader(internalResolver));
+		this.assetManager.setLoader(StringBlob.class, new StringBlobLoader(internalResolver));
 		
 		this.kryo = new Kryo();
 		this.kryo.register(GameSession.class, new GameSessionSerializer());
