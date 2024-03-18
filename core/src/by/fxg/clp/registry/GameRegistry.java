@@ -9,17 +9,26 @@ import by.fxg.clp.core.ResourceManager;
 import by.fxg.clp.registry.items.Item;
 import by.fxg.clp.registry.items.ItemResource;
 import by.fxg.clp.registry.items.ItemTool;
+import by.fxg.clp.util.IntRange;
 import by.fxg.clp.util.ResourceTag;
+import by.fxg.clp.util.StringBlob;
 
 public class GameRegistry {
 	private static Array<Item> registeredItems = new Array<>();
+	public static StringBlob namesFirstnames;
+	public static StringBlob namesSurnames;
+	public static StringBlob dialogues;
+	
+	// Level layouts
+	public static LevelLayout layoutTutorial;
+	public static LevelLayout layoutRitualSite;
+	
 	// Merchants
 	
-	
 	// Items
-	public static ItemTool TOOL_LOCKPICK;
-	public static ItemTool TOOL_WRENCHES;
-	public static ItemTool TOOL_CRAPBOMB;
+	public static ItemTool toolLockpick;
+	public static ItemTool toolWrenches;
+	public static ItemTool toolCrapbomb;
 	
 	public static ItemResource itemLungsBooster;
 	public static ItemResource itemBananaBranch;
@@ -35,9 +44,25 @@ public class GameRegistry {
 	public static ItemResource itemDevilContract;
 	
 	public static void init() {
-		TOOL_LOCKPICK = new ItemTool("Lockpick", "lockpick", 25);
-		TOOL_WRENCHES = new ItemTool("Wrenches", "wrenches", 1);
-		TOOL_CRAPBOMB = new ItemTool("Crap-bomb", "crapbomb", 1);
+		final ResourceManager resourceManager = Game.INSTANCE.resourceManager;
+		
+		// String Blobs ===================================================================================================================================
+		
+		namesFirstnames = resourceManager.getAssetWithFallback(StringBlob.class, "stringblobs/firstnames.blob", StringBlob.PLACEHOLDER);
+		namesSurnames = resourceManager.getAssetWithFallback(StringBlob.class, "stringblobs/surnames.blob", StringBlob.PLACEHOLDER);
+		dialogues = resourceManager.getAssetWithFallback(StringBlob.class, "stringblobs/dialogues.blob", StringBlob.PLACEHOLDER);
+		
+		// Layouts ========================================================================================================================================
+		
+		layoutTutorial = new LevelLayout(IntRange.of(1, 3), IntRange.ZERO);
+		
+		//layoutRitualSite = new LevelLayout(IntRange.of(), IntRange.ZERO);
+		
+		// Items ==========================================================================================================================================
+		
+		toolLockpick = new ItemTool("Lockpick", "lockpick", 25);
+		toolWrenches = new ItemTool("Wrenches", "wrenches", 1);
+		toolCrapbomb = new ItemTool("Crap-bomb", "crapbomb", 1);
 		
 		// Common
 		itemLungsBooster =	(ItemResource)new ItemResource("Lungs booster", "lungsbooster").setTradeable(4.99f, 0, 10, ResourceTag.COMMON_MERCHANDISE);
@@ -55,7 +80,7 @@ public class GameRegistry {
 		itemDevilContract = 	(ItemResource)new ItemResource("Devil's Contract", "devilcontract").setTradeable(500, 0, 1, ResourceTag.RITUAL_MERCHANDISE);
 		
 		// (ItemResource)new ItemResource("name", "texture");
-		loadItemsTextures(Game.INSTANCE.resourceManager);
+		loadItemsTextures(resourceManager);
 	}
 	
 	// slow but there's no so much items
