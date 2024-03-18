@@ -49,10 +49,10 @@ public class GameRegistry {
 		// Covert
 		
 		// Ritual
-		itemRitualMask =		(ItemResource)new ItemResource("Ritual Mask", "ritualmask");
-		itemCursedPainting = 	(ItemResource)new ItemResource("Cursed Painting", "cursedpainting");
-		itemDemonFruit =		(ItemResource)new ItemResource("Demonfruit", "demonfruit");
-		itemDevilContract = 	(ItemResource)new ItemResource("Devil's Contract", "devilcontract").setTradeable(350, maxSaleStock, maxPurchaseStock, traderTag);
+		itemRitualMask =		(ItemResource)new ItemResource("Ritual Mask", "ritualmask").setTradeable(250, 0, 2, ResourceTag.RITUAL_MERCHANDISE);
+		itemCursedPainting = 	(ItemResource)new ItemResource("Cursed Painting", "cursedpainting").setTradeable(350, 0, 1, ResourceTag.RITUAL_MERCHANDISE);
+		itemDemonFruit =		(ItemResource)new ItemResource("Demonfruit", "demonfruit").setTradeable(75, 0, 5, ResourceTag.RITUAL_MERCHANDISE);
+		itemDevilContract = 	(ItemResource)new ItemResource("Devil's Contract", "devilcontract").setTradeable(500, 0, 1, ResourceTag.RITUAL_MERCHANDISE);
 		
 		// (ItemResource)new ItemResource("name", "texture");
 		loadItemsTextures(Game.INSTANCE.resourceManager);
