@@ -28,6 +28,19 @@ public final class Quest {
 	// world data for this order, like chests placement, locks data, for active levels
 	private QuestData questData;
 	
+	public Quest() {
+	}
+	
+	public Quest(String ownerName, int ownerIconID, int descriptionID, int difficulty, Item requiredItem, int revenue, LevelLayout levelLayout) {
+		this.ownerName = ownerName;
+		this.ownerIconID = ownerIconID;
+		this.descriptionID = descriptionID;
+		this.difficulty = difficulty;
+		this.requiredItem = requiredItem;
+		this.revenue = revenue;
+		this.levelLayout = levelLayout;
+	}
+	
 	public static Quest createTutorialQuest() {
 		final Quest quest = new Quest();
 		quest.isTutorial = true;
@@ -54,7 +67,7 @@ public final class Quest {
 		}
 		
 		while (quest.levelLayout == null) {
-			final LevelLayout layout = GameRegistry.LAYOUT_POOLS.random();
+			final LevelLayout layout = GameRegistry.LEVEL_LAYOUTS.random();
 			if (layout.difficulty.isInRange(quest.difficulty)) {
 				quest.levelLayout = layout;
 			}
@@ -63,19 +76,47 @@ public final class Quest {
 		return quest;
 	}
 	
-	public void onQuestAccepted() {
-		
+	public boolean isTutorialQuest() {
+		return this.isTutorial;
+	}
+	
+	public String getOwnerName() {
+		return this.ownerName;
+	}
+	
+	public int getOwnerIconID() {
+		return this.ownerIconID;
+	}
+	
+	public int getDescriptionID() {
+		return this.descriptionID;
+	}
+	
+	public int getDifficulty() {
+		return this.difficulty;
 	}
 	
 	public Item getRequiredItem() {
 		return this.requiredItem;
 	}
 	
-	public QuestData getOrderData() {
+	public int getRevenue() {
+		return this.revenue;
+	}
+	
+	public LevelLayout getLevelLayout() {
+		return this.levelLayout;
+	}
+	
+	public QuestData getQuestData() {
 		return this.questData;
 	}
 	
-	public void setOrderData(QuestData questData) {
+	public void setQuestData(QuestData questData) {
 		this.questData = questData;
+	}
+	
+	public boolean hasBeenAccepted() {
+		return this.questData != null && this.questData.hasBeenAccepted;
 	}
 }
