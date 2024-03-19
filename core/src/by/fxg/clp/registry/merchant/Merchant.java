@@ -5,12 +5,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Disposable;
 
 import by.fxg.clp.core.Game;
 import by.fxg.clp.core.ResourceManager;
 
-public abstract class Merchant implements Disposable {
+public abstract class Merchant {
 	public static final Array<Merchant> randomlyAccessibleMerchants = new Array<>();
 	
 	// Internals
@@ -21,8 +20,8 @@ public abstract class Merchant implements Disposable {
 	// Generation
 	private float generationChance = 0;
 	
-	// Offers generation
-	protected long offersSeed0, offersSeed1;
+	// Offers
+	protected Array<MerchantOffer> offers = new Array<>();
 	
 	public Merchant(String name, String textureName, float sizeX, float sizeY) {
 		this.name = name;
@@ -49,19 +48,24 @@ public abstract class Merchant implements Disposable {
 		return this.generationChance;
 	}
 	
-	/** Updates seed to randomly generated one **/
-	public void updateSeed() {
-		this.setSeed(MathUtils.random.nextLong(), MathUtils.random.nextLong());
-	}
-	
-	/** Sets specified seed **/
-	public void setSeed(long seed0, long seed1) {
-		this.offersSeed0 = seed0;
-		this.offersSeed1 = seed1;
-	}
-
 	/** Refreshes offers **/
 	public abstract void refreshOffers();
+	
+	/** Returns offers array **/
+	public Array<MerchantOffer> getOffers() {
+		return this.offers;
+	}
+	
+	/** Returns balanced random chance for sale offer based
+	 *    on total amount of sale and purchase offers **/
+	protected float getBalancedRandom(int saleOffers, int purchaseOffers) {
+		if (saleOffers < 1) return 1;
+		if (purchaseOffers < 1) return 0;
+		
+		final float saleFactor = 1.0f / saleOffers;
+		final float purchaseFactor = 1.0f / purchaseOffers;
+		return saleFactor < purchaseFactor ? (purchaseOffers * saleFactor) : (saleOffers * purchaseFactor);
+	}
 	
 	/** Returns random merchant
 	 *  @param noMerchantChance - chance to get null(no merchant), 0.0-1.0 **/
