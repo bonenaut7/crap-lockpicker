@@ -25,6 +25,10 @@ public final class IntRange {
 		return MathUtils.random(this.min, this.max);
 	}
 	
+	public boolean isInRange(int value) {
+		return this.min <= value && value <= this.max;
+	}
+	
 	public static IntRange of(int min, int max) {
 		return new IntRange(min, max);
 	}
