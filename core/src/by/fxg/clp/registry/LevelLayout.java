@@ -3,10 +3,14 @@ package by.fxg.clp.registry;
 import by.fxg.clp.util.IntRange;
 
 public class LevelLayout {
+	public final String locationName;
+	public final IntRange difficulty; // min-max value of difficulty which this layout will represent
 	public final IntRange containers; // min-max value of chests on the level
 	public final IntRange doorLocks; // min-max value of door locks on the level
 	
-	public LevelLayout(IntRange containers, IntRange doorLocks) {
+	public LevelLayout(String locationName, IntRange difficulty, IntRange containers, IntRange doorLocks) {
+		this.locationName = locationName;
+		this.difficulty = difficulty;
 		this.containers = containers;
 		this.doorLocks = doorLocks;
 	}
