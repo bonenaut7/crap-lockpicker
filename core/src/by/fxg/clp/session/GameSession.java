@@ -4,27 +4,49 @@ import java.io.IOException;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
 import by.fxg.clp.core.Game;
+import by.fxg.clp.registry.GameRegistry;
+import by.fxg.clp.registry.merchant.Merchant;
 import by.fxg.clp.registry.quests.Quest;
 
 public class GameSession {
+	public static final int MAX_GENERATED_QUESTS = 4;
 	public GameSettings gameSettings;
 	public GameInventory gameInventory;
-	public Quest activeQuest;
+	
+	public Array<Quest> availableQuests = new Array<>();
+	public Quest activeQuest = null;
+	public Merchant merchantCashier;
+	public Merchant merchantBystander;
 	
 	public void init() {
 		this.gameSettings = new GameSettings();
 		this.gameInventory = new GameInventory();
 		this.activeQuest = null;
+		this.merchantCashier = GameRegistry.merchantCashier;
+		this.merchantBystander = null;
 	}
 	
 	public void save() {
 		saveGameSession(Game.INSTANCE.resourceManager.kryo, this);
 	}
+	
+	public void refillQuests() {
+		for (int i = this.availableQuests.size - 1; i < MAX_GENERATED_QUESTS; i++) {
+			this.availableQuests.add(Quest.createRandomQuest());
+		}
+	}
+	
+	
+	
+	
+	
+	// Static
 	
 	public static GameSession loadGameSession(Kryo kryo) {
 		final FileHandle fileHandle = getSaveFileHandle();
