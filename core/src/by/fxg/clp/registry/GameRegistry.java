@@ -20,12 +20,17 @@ public class GameRegistry {
 	public static StringBlob dialogues;
 	
 	// Level layouts
+	public static final Array<LevelLayout> LAYOUT_POOLS = new Array<>();
 	public static LevelLayout layoutTutorial;
 	public static LevelLayout layoutRitualSite;
 	
 	// Merchants
 	
+	
 	// Items
+	@SuppressWarnings("unchecked")
+	public static final Array<Item>[] LOOT_POOLS = new Array[] { new Array<>(), new Array<>(), new Array<>() };
+	
 	public static ItemTool toolLockpick;
 	public static ItemTool toolWrenches;
 	public static ItemTool toolCrapbomb;
@@ -54,9 +59,12 @@ public class GameRegistry {
 		
 		// Layouts ========================================================================================================================================
 		
-		layoutTutorial = new LevelLayout(IntRange.of(1, 3), IntRange.ZERO);
+		layoutTutorial = new LevelLayout("Tutorial", IntRange.ZERO, IntRange.of(1, 3), IntRange.ZERO);
 		
-		//layoutRitualSite = new LevelLayout(IntRange.of(), IntRange.ZERO);
+		layoutRitualSite = new LevelLayout("Ritual Site", IntRange.of(3, 3), IntRange.of(), IntRange.ZERO);
+		
+		// Layout pools
+		LAYOUT_POOLS.addAll(layoutRitualSite);
 		
 		// Items ==========================================================================================================================================
 		
@@ -72,12 +80,18 @@ public class GameRegistry {
 		itemTVRemote = 		(ItemResource)new ItemResource("TV Remote", "tvremote").setTradeable(15, 1, 5, ResourceTag.COMMON_MERCHANDISE);
 		
 		// Covert
+		itemGoldBars = 		(ItemResource)new ItemResource("Gold Bars", "goldbars").setTradeable(125, 1, 2, ResourceTag.COVERT_MERCHANDISE);
 		
 		// Ritual
 		itemRitualMask =		(ItemResource)new ItemResource("Ritual Mask", "ritualmask").setTradeable(250, 0, 2, ResourceTag.RITUAL_MERCHANDISE);
 		itemCursedPainting = 	(ItemResource)new ItemResource("Cursed Painting", "cursedpainting").setTradeable(350, 0, 1, ResourceTag.RITUAL_MERCHANDISE);
 		itemDemonFruit =		(ItemResource)new ItemResource("Demonfruit", "demonfruit").setTradeable(75, 0, 5, ResourceTag.RITUAL_MERCHANDISE);
 		itemDevilContract = 	(ItemResource)new ItemResource("Devil's Contract", "devilcontract").setTradeable(500, 0, 1, ResourceTag.RITUAL_MERCHANDISE);
+		
+		// Loot pools
+		LOOT_POOLS[0].addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote);
+		LOOT_POOLS[1].addAll(itemModem, itemTVRemote, itemGoldBars);
+		LOOT_POOLS[2].addAll(itemRitualMask, itemCursedPainting, itemDemonFruit, itemDevilContract);
 		
 		// (ItemResource)new ItemResource("name", "texture");
 		loadItemsTextures(resourceManager);
