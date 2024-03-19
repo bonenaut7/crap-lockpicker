@@ -20,6 +20,10 @@ public class StringBlob {
 			this.array[MathUtils.random.nextInt(this.array.length)];
 	}
 	
+	public int randomIndex() {
+		return this.isEmpty ? 0 : MathUtils.random.nextInt(this.array.length);
+	}
+	
 	public String get(int index) {
 		return this.isEmpty ? null :
 			index > -1 && index < this.array.length ? this.array[index] : null;
