@@ -20,7 +20,7 @@ public class GameRegistry {
 	public static StringBlob dialogues;
 	
 	// Level layouts
-	public static final Array<LevelLayout> LAYOUT_POOLS = new Array<>();
+	public static final Array<LevelLayout> LEVEL_LAYOUTS = new Array<>();
 	public static LevelLayout layoutTutorial;
 	public static LevelLayout layoutRitualSite;
 	
@@ -64,7 +64,7 @@ public class GameRegistry {
 		layoutRitualSite = new LevelLayout("Ritual Site", IntRange.of(3, 3), IntRange.of(), IntRange.ZERO);
 		
 		// Layout pools
-		LAYOUT_POOLS.addAll(layoutRitualSite);
+		LEVEL_LAYOUTS.addAll(layoutRitualSite);
 		
 		// Items ==========================================================================================================================================
 		
@@ -147,5 +147,9 @@ public class GameRegistry {
 		}
 		
 		return null;
+	}
+	
+	public static LevelLayout getLevelLayoutByIndex(int index) {
+		return index > -1 && index < LEVEL_LAYOUTS.size ? LEVEL_LAYOUTS.get(index) : LEVEL_LAYOUTS.random();
 	}
 }
