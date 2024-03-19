@@ -5,7 +5,7 @@ import com.esotericsoftware.kryo.Serializer;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
-import by.fxg.clp.core.GameRegistry;
+import by.fxg.clp.registry.GameRegistry;
 import by.fxg.clp.registry.items.Item;
 import by.fxg.clp.registry.items.ItemInstance;
 

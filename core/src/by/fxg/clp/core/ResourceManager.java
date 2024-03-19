@@ -23,6 +23,9 @@ import com.badlogic.gdx.utils.Disposable;
 import com.esotericsoftware.kryo.Kryo;
 
 import by.fxg.clp.registry.items.ItemInstance;
+import by.fxg.clp.registry.merchant.Merchant;
+import by.fxg.clp.registry.quests.Quest;
+import by.fxg.clp.registry.quests.QuestData;
 import by.fxg.clp.session.GameInventory;
 import by.fxg.clp.session.GameSession;
 import by.fxg.clp.session.GameSettings;
@@ -33,6 +36,9 @@ import by.fxg.clp.util.serialization.GameInventorySerializer;
 import by.fxg.clp.util.serialization.GameSessionSerializer;
 import by.fxg.clp.util.serialization.GameSettingsSerializer;
 import by.fxg.clp.util.serialization.ItemInstanceSerializer;
+import by.fxg.clp.util.serialization.MerchantSerializer;
+import by.fxg.clp.util.serialization.QuestDataSerializer;
+import by.fxg.clp.util.serialization.QuestSerializer;
 import de.pottgames.tuningfork.SoundBuffer;
 import de.pottgames.tuningfork.SoundBufferLoader;
 
@@ -62,6 +68,9 @@ public class ResourceManager implements Disposable {
 		this.kryo.register(GameSettings.class, new GameSettingsSerializer());
 		this.kryo.register(GameInventory.class, new GameInventorySerializer());
 		this.kryo.register(ItemInstance.class, new ItemInstanceSerializer());
+		this.kryo.register(Merchant.class, new MerchantSerializer());
+		this.kryo.register(QuestData.class, new QuestDataSerializer());
+		this.kryo.register(Quest.class, new QuestSerializer());
 		
 		// Create placeholders
 		Pixmap pixmap = new Pixmap(1, 1, Format.RGBA8888);
