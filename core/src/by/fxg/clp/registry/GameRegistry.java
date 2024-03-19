@@ -9,6 +9,10 @@ import by.fxg.clp.core.ResourceManager;
 import by.fxg.clp.registry.items.Item;
 import by.fxg.clp.registry.items.ItemResource;
 import by.fxg.clp.registry.items.ItemTool;
+import by.fxg.clp.registry.items.ItemTradeable;
+import by.fxg.clp.registry.merchant.MerchantCashier;
+import by.fxg.clp.registry.merchant.MerchantDevil;
+import by.fxg.clp.registry.merchant.MerchantHuckster;
 import by.fxg.clp.util.IntRange;
 import by.fxg.clp.util.ResourceTag;
 import by.fxg.clp.util.StringBlob;
@@ -25,7 +29,13 @@ public class GameRegistry {
 	public static LevelLayout layoutRitualSite;
 	
 	// Merchants
+	public static final Array<ItemTradeable> MERCHANT_CASHIER_TRADE_POOL = new Array<>();
+	public static final Array<ItemTradeable> MERCHANT_HUCKSTER_TRADE_POOL = new Array<>();
+	public static final Array<ItemTradeable> MERCHANT_DEVIL_TRADE_POOL = new Array<>();
 	
+	public static MerchantCashier merchantCashier;
+	public static MerchantHuckster merchantHuckster;
+	public static MerchantDevil merchantDevil;
 	
 	// Items
 	@SuppressWarnings("unchecked")
@@ -66,6 +76,12 @@ public class GameRegistry {
 		// Layout pools
 		LEVEL_LAYOUTS.addAll(layoutRitualSite);
 		
+		// Merchants ======================================================================================================================================
+		
+		merchantCashier = new MerchantCashier();
+		merchantHuckster = new MerchantHuckster();
+		merchantDevil = new MerchantDevil();
+		
 		// Items ==========================================================================================================================================
 		
 		toolLockpick = new ItemTool("Lockpick", "lockpick", 25);
@@ -89,6 +105,10 @@ public class GameRegistry {
 		itemDevilContract = 	(ItemResource)new ItemResource("Devil's Contract", "devilcontract").setTradeable(500, 0, 1, ResourceTag.RITUAL_MERCHANDISE);
 		
 		// Loot pools
+		MERCHANT_CASHIER_TRADE_POOL.addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote, itemDemonFruit);
+		MERCHANT_HUCKSTER_TRADE_POOL.addAll(itemModem, itemTVRemote, itemGoldBars, itemCursedPainting);
+		MERCHANT_DEVIL_TRADE_POOL.addAll(itemRitualMask, itemCursedPainting, itemDemonFruit, itemDevilContract);
+		
 		LOOT_POOLS[0].addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote);
 		LOOT_POOLS[1].addAll(itemModem, itemTVRemote, itemGoldBars);
 		LOOT_POOLS[2].addAll(itemRitualMask, itemCursedPainting, itemDemonFruit, itemDevilContract);
