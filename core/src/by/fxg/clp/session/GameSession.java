@@ -29,11 +29,14 @@ public class GameSession {
 	public int failedQuests = 0;
 	public float totalEarned = 0;
 	
+	public GameSession() {
+		this.merchantCashier = GameRegistry.merchantCashier;
+	}
+	
 	public void init() {
 		this.gameSettings = new GameSettings();
 		this.gameInventory = new GameInventory();
 		this.activeQuest = null;
-		this.merchantCashier = GameRegistry.merchantCashier;
 		this.merchantBystander = null;
 	}
 	
