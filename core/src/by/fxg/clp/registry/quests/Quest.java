@@ -12,6 +12,8 @@ import by.fxg.clp.util.IntRange;
  *    for the questData which has serializable data in it like
  *    containers placement, locks state and etc **/
 public final class Quest {
+	public static final int TUTORIAL_QUEST_REVENUE = 35;
+	public static final float REVENUE_MODIFIER_ITEM_NOT_FOUND = 0.5f;
 	public static final IntRange AVATARS_ID = IntRange.of(0, 19);
 	public static final String TUTORIAL_DESCRIPTION = "You can always find me here, but don't forget to bring a Lungs Booster with you.";
 	
