@@ -24,6 +24,11 @@ public class GameSession {
 	public Merchant merchantCashier;
 	public Merchant merchantBystander;
 	
+	// Stats
+	public int completedQuests = 0;
+	public int failedQuests = 0;
+	public float totalEarned = 0;
+	
 	public void init() {
 		this.gameSettings = new GameSettings();
 		this.gameInventory = new GameInventory();
