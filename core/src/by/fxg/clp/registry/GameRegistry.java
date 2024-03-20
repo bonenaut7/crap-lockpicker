@@ -13,6 +13,12 @@ import by.fxg.clp.registry.items.ItemTradeable;
 import by.fxg.clp.registry.merchant.MerchantCashier;
 import by.fxg.clp.registry.merchant.MerchantDevil;
 import by.fxg.clp.registry.merchant.MerchantHuckster;
+import by.fxg.clp.registry.merchant.locks.Lock;
+import by.fxg.clp.registry.merchant.locks.LockNumberCode;
+import by.fxg.clp.registry.merchant.locks.LockOpened;
+import by.fxg.clp.registry.merchant.locks.LockRadial;
+import by.fxg.clp.registry.merchant.locks.LockWordCode;
+import by.fxg.clp.registry.merchant.locks.LockWrenchableQTE;
 import by.fxg.clp.util.IntRange;
 import by.fxg.clp.util.ResourceTag;
 import by.fxg.clp.util.StringBlob;
@@ -33,9 +39,17 @@ public class GameRegistry {
 	public static final Array<ItemTradeable> MERCHANT_HUCKSTER_TRADE_POOL = new Array<>();
 	public static final Array<ItemTradeable> MERCHANT_DEVIL_TRADE_POOL = new Array<>();
 	
-	public static MerchantCashier merchantCashier;
-	public static MerchantHuckster merchantHuckster;
-	public static MerchantDevil merchantDevil;
+	public static MerchantCashier merchantCashier	 	= new MerchantCashier();
+	public static MerchantHuckster merchantHuckster	 	= new MerchantHuckster();
+	public static MerchantDevil merchantDevil		 	= new MerchantDevil();
+	
+	// Locks, should i add padlock?
+	public static final Array<Lock> REGISTERED_LOCKS 	= new Array<>();
+	public static LockOpened lockOpened 				= new LockOpened();
+	public static LockWrenchableQTE lockWrenchableQTE 	= new LockWrenchableQTE();;
+	public static LockWordCode lockWordCode 			= new LockWordCode();
+	public static LockRadial lockRadial 				= new LockRadial();
+	public static LockNumberCode lockNumberCode 		= new LockNumberCode();
 	
 	// Items
 	@SuppressWarnings("unchecked")
@@ -62,13 +76,11 @@ public class GameRegistry {
 		final ResourceManager resourceManager = Game.INSTANCE.resourceManager;
 		
 		// String Blobs ===================================================================================================================================
-		
 		namesFirstnames = resourceManager.getAssetWithFallback(StringBlob.class, "stringblobs/firstnames.blob", StringBlob.PLACEHOLDER);
 		namesSurnames = resourceManager.getAssetWithFallback(StringBlob.class, "stringblobs/surnames.blob", StringBlob.PLACEHOLDER);
 		dialogues = resourceManager.getAssetWithFallback(StringBlob.class, "stringblobs/dialogues.blob", StringBlob.PLACEHOLDER);
 		
 		// Layouts ========================================================================================================================================
-		
 		layoutTutorial = new LevelLayout("Tutorial", IntRange.ZERO, IntRange.of(1, 3), IntRange.ZERO);
 		
 		layoutRitualSite = new LevelLayout("Ritual Site", IntRange.of(3, 3), IntRange.of(), IntRange.ZERO);
@@ -76,14 +88,10 @@ public class GameRegistry {
 		// Layout pools
 		LEVEL_LAYOUTS.addAll(layoutRitualSite);
 		
-		// Merchants ======================================================================================================================================
-		
-		merchantCashier = new MerchantCashier();
-		merchantHuckster = new MerchantHuckster();
-		merchantDevil = new MerchantDevil();
+		// Locks ==========================================================================================================================================
+		REGISTERED_LOCKS.addAll(lockWrenchableQTE, lockWordCode, lockRadial, lockNumberCode);
 		
 		// Items ==========================================================================================================================================
-		
 		toolLockpick = new ItemTool("Lockpick", "lockpick", 25);
 		toolWrenches = new ItemTool("Wrenches", "wrenches", 1);
 		toolCrapbomb = new ItemTool("Crap-bomb", "crapbomb", 1);
@@ -104,7 +112,7 @@ public class GameRegistry {
 		itemDemonFruit =		(ItemResource)new ItemResource("Demonfruit", "demonfruit").setTradeable(75, 0, 5, ResourceTag.RITUAL_MERCHANDISE);
 		itemDevilContract = 	(ItemResource)new ItemResource("Devil's Contract", "devilcontract").setTradeable(500, 0, 1, ResourceTag.RITUAL_MERCHANDISE);
 		
-		// Loot pools
+		// Loot Pools =====================================================================================================================================
 		MERCHANT_CASHIER_TRADE_POOL.addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote, itemDemonFruit);
 		MERCHANT_HUCKSTER_TRADE_POOL.addAll(itemModem, itemTVRemote, itemGoldBars, itemCursedPainting);
 		MERCHANT_DEVIL_TRADE_POOL.addAll(itemRitualMask, itemCursedPainting, itemDemonFruit, itemDevilContract);
@@ -112,8 +120,8 @@ public class GameRegistry {
 		LOOT_POOLS[0].addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote);
 		LOOT_POOLS[1].addAll(itemModem, itemTVRemote, itemGoldBars);
 		LOOT_POOLS[2].addAll(itemRitualMask, itemCursedPainting, itemDemonFruit, itemDevilContract);
-		
-		// (ItemResource)new ItemResource("name", "texture");
+
+		// post-load
 		loadItemsTextures(resourceManager);
 	}
 	
