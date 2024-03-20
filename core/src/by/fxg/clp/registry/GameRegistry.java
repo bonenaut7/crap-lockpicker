@@ -66,6 +66,7 @@ public class GameRegistry {
 	public static ItemResource itemDoritos;
 	public static ItemResource itemModem;
 	public static ItemResource itemTVRemote;
+	public static ItemResource itemRearViewMirror;
 	
 	public static ItemResource itemGoldBars;
 	
@@ -109,7 +110,8 @@ public class GameRegistry {
 		itemTVRemote = 		(ItemResource)new ItemResource("TV Remote", "tvremote").setTradeable(15, 1, 5, ResourceTag.COMMON_MERCHANDISE);
 		
 		// Covert
-		itemGoldBars = 		(ItemResource)new ItemResource("Gold Bars", "goldbars").setTradeable(125, 1, 2, ResourceTag.COVERT_MERCHANDISE);
+		itemRearViewMirror =	(ItemResource)new ItemResource("Rear View Mirror", "rearviewmirror").setTradeable(50, 1, 2, ResourceTag.COVERT_MERCHANDISE);
+		itemGoldBars = 			(ItemResource)new ItemResource("Gold Bars", "goldbars").setTradeable(125, 1, 2, ResourceTag.COVERT_MERCHANDISE);
 		
 		// Ritual
 		itemRitualMask =		(ItemResource)new ItemResource("Ritual Mask", "ritualmask").setTradeable(250, 0, 2, ResourceTag.RITUAL_MERCHANDISE);
@@ -119,11 +121,11 @@ public class GameRegistry {
 		
 		// Loot Pools =====================================================================================================================================
 		MERCHANT_CASHIER_TRADE_POOL.addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote, itemDemonFruit);
-		MERCHANT_HUCKSTER_TRADE_POOL.addAll(itemModem, itemTVRemote, itemGoldBars, itemCursedPainting);
+		MERCHANT_HUCKSTER_TRADE_POOL.addAll(itemModem, itemTVRemote, itemRearViewMirror, itemGoldBars, itemCursedPainting);
 		MERCHANT_DEVIL_TRADE_POOL.addAll(itemRitualMask, itemCursedPainting, itemDemonFruit, itemDevilContract);
 		
-		LOOT_POOLS[0].addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote);
-		LOOT_POOLS[1].addAll(itemModem, itemTVRemote, itemGoldBars);
+		LOOT_POOLS[0].addAll(itemLungsBooster, itemBananaBranch, itemDoritos, itemModem, itemTVRemote, itemRearViewMirror);
+		LOOT_POOLS[1].addAll(itemModem, itemTVRemote, itemRearViewMirror, itemGoldBars);
 		LOOT_POOLS[2].addAll(itemRitualMask, itemCursedPainting, itemDemonFruit, itemDevilContract);
 
 		// post-load
