@@ -12,7 +12,7 @@ public class GameEventHandler {
 	// Makes quest active
 	public void onQuestAccepted(QuestAcceptedEvent event) {
 		final GameSession session = event.getSession();
-		if (session.activeQuest == null) return; // what the hell?
+		if (session.activeQuest != null) return; // what the hell?
 		
 		session.activeQuest = event.getQuest();
 		session.save();
