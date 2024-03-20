@@ -12,6 +12,7 @@ public class QuestDataSerializer extends Serializer<QuestData> {
 	public void write(Kryo kryo, Output output, QuestData object) {
 		output.writeBoolean(object != null);
 		if (object != null) {
+			output.writeBoolean(object.hasBeenAccepted);
 			output.writeBoolean(object.requiredItemFound);
 		}
 	}
@@ -20,6 +21,7 @@ public class QuestDataSerializer extends Serializer<QuestData> {
 	public QuestData read(Kryo kryo, Input input, Class<? extends QuestData> type) {
 		if (input.readBoolean()) {
 			QuestData questData = new QuestData();
+			questData.hasBeenAccepted = input.readBoolean();
 			questData.requiredItemFound = input.readBoolean();
 			
 			return questData;
