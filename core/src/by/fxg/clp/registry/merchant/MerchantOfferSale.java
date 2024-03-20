@@ -24,10 +24,10 @@ public class MerchantOfferSale extends MerchantOffer {
 	@Override
 	public boolean isOfferAvailable(GameSession session) {
 		return
-			this.stock > 0 &&												// Stock is more than 0
+			this.stock > 0 &&											// Stock is more than 0
 			this.itemType.getPrice() > 0 &&								// Price is more than 0
 			session.gameInventory.money >= this.itemType.getPrice() &&	// Player has more money than cost of item
-			session.gameInventory.addItem(this.itemInstance, true); // Simulation pass of adding item to the inventory
+			session.gameInventory.addItem(this.itemInstance, true); 	// Simulation pass of adding item to the inventory
 	}
 	
 	@Override

@@ -23,7 +23,7 @@ public class MerchantOfferPurchase extends MerchantOffer {
 	@Override
 	public boolean isOfferAvailable(GameSession session) {
 		return
-			this.stock > 0 &&									// Stock is more than 0
+			this.stock > 0 &&								// Stock is more than 0
 			this.itemType.getPrice() > 0 &&					// Price is more than 0
 			session.gameInventory.hasItem(this.itemType); 	// Is there an item with required type in the inventory?
 	}

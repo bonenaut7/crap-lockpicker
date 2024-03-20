@@ -24,6 +24,8 @@ import com.esotericsoftware.kryo.Kryo;
 
 import by.fxg.clp.registry.items.ItemInstance;
 import by.fxg.clp.registry.merchant.Merchant;
+import by.fxg.clp.registry.merchant.MerchantOfferPurchase;
+import by.fxg.clp.registry.merchant.MerchantOfferSale;
 import by.fxg.clp.registry.merchant.locks.LockState;
 import by.fxg.clp.registry.quests.Quest;
 import by.fxg.clp.registry.quests.QuestData;
@@ -38,6 +40,8 @@ import by.fxg.clp.util.serialization.GameSessionSerializer;
 import by.fxg.clp.util.serialization.GameSettingsSerializer;
 import by.fxg.clp.util.serialization.ItemInstanceSerializer;
 import by.fxg.clp.util.serialization.LockStateSerializer;
+import by.fxg.clp.util.serialization.MerchantOfferPurchaseSerializer;
+import by.fxg.clp.util.serialization.MerchantOfferSaleSerializer;
 import by.fxg.clp.util.serialization.MerchantSerializer;
 import by.fxg.clp.util.serialization.QuestDataSerializer;
 import by.fxg.clp.util.serialization.QuestSerializer;
@@ -74,6 +78,8 @@ public class ResourceManager implements Disposable {
 		this.kryo.register(QuestData.class, new QuestDataSerializer());
 		this.kryo.register(Quest.class, new QuestSerializer());
 		this.kryo.register(LockState.class, new LockStateSerializer());
+		this.kryo.register(MerchantOfferSale.class, new MerchantOfferSaleSerializer());
+		this.kryo.register(MerchantOfferPurchase.class, new MerchantOfferPurchaseSerializer());
 		
 		// Create placeholders
 		Pixmap pixmap = new Pixmap(1, 1, Format.RGBA8888);
