@@ -51,10 +51,8 @@ public class Game extends ApplicationAdapter {
 		GameRegistry.init();
 		this.gameSession = GameSession.loadGameSession(this.resourceManager.kryo);
 		
-
-		// TODO complete merchants
+		// TODO locks mechanic
 		// TODO complete quests
-		// TODO add serialization for merchant and quests
 		// TODO make models
 		// TODO FIXME find out how to create level from LevelLayout
 		// TODO choose speceditor and add integration
