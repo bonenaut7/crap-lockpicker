@@ -43,7 +43,7 @@ public class GameRegistry {
 	public static MerchantHuckster merchantHuckster	 	= new MerchantHuckster();
 	public static MerchantDevil merchantDevil		 	= new MerchantDevil();
 	
-	// Locks, should i add padlock?
+	// Locks
 	public static final Array<Lock> REGISTERED_LOCKS 	= new Array<>();
 	public static LockOpened lockOpened 				= new LockOpened();
 	public static LockWrenchableQTE lockWrenchableQTE 	= new LockWrenchableQTE();;
@@ -89,7 +89,7 @@ public class GameRegistry {
 		LEVEL_LAYOUTS.addAll(layoutRitualSite);
 		
 		// Locks ==========================================================================================================================================
-		REGISTERED_LOCKS.addAll(lockWrenchableQTE, lockWordCode, lockRadial, lockNumberCode);
+		REGISTERED_LOCKS.addAll(lockOpened, lockWrenchableQTE, lockWordCode, lockRadial, lockNumberCode);
 		
 		// Items ==========================================================================================================================================
 		toolLockpick = new ItemTool("Lockpick", "lockpick", 25);
