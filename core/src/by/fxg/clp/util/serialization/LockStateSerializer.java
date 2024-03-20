@@ -12,7 +12,7 @@ public class LockStateSerializer extends Serializer<LockState<?>> {
 	@Override
 	public void write(Kryo kryo, Output output, LockState<?> object) {
 		final int lockIndex = GameRegistry.REGISTERED_LOCKS.indexOf(object.getLock(), true);
-		if (lockIndex < 1 || lockIndex >= GameRegistry.REGISTERED_LOCKS.size) { // is lock is undefined or is it opened lock
+		if (lockIndex < 0 || lockIndex >= GameRegistry.REGISTERED_LOCKS.size) { // is lock is undefined or is it opened lock
 			output.writeBoolean(true);
 			return;
 		} else {

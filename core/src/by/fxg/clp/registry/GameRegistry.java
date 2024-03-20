@@ -83,9 +83,9 @@ public class GameRegistry {
 		dialogues = resourceManager.getAssetWithFallback(StringBlob.class, "stringblobs/dialogues.blob", StringBlob.PLACEHOLDER);
 		
 		// Layouts ========================================================================================================================================
-		layoutTutorial = new LevelLayout("Tutorial", IntRange.ZERO, IntRange.of(1, 3), IntRange.ZERO);
+		layoutTutorial = new LevelLayout("Tutorial", 0.75f, IntRange.ZERO, IntRange.of(1, 3), IntRange.ZERO);
 		
-		layoutRitualSite = new LevelLayout("Ritual Site", IntRange.of(3, 3), IntRange.of(), IntRange.ZERO);
+		layoutRitualSite = new LevelLayout("Ritual Site", 0.15f, IntRange.of(3, 3), IntRange.of(), IntRange.ZERO);
 		
 		// Layout pools
 		LEVEL_LAYOUTS.addAll(layoutRitualSite);
@@ -94,7 +94,7 @@ public class GameRegistry {
 		REGISTERED_MERCHANTS.addAll(merchantCashier, merchantHuckster, merchantDevil);
 		
 		// Locks ==========================================================================================================================================
-		REGISTERED_LOCKS.addAll(lockOpened, lockWrenchableQTE, lockWordCode, lockRadial, lockNumberCode);
+		REGISTERED_LOCKS.addAll(lockWrenchableQTE, lockWordCode, lockRadial, lockNumberCode);
 		
 		// Items ==========================================================================================================================================
 		toolLockpick = new ItemTool("Lockpick", "lockpick", 25);
