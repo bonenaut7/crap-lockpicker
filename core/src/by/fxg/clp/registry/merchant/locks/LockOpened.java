@@ -18,15 +18,8 @@ public class LockOpened extends Lock {
 	}
 	
 	@Override
-	@Deprecated
-	public boolean canOpenLock(GameSession session) {
+	public boolean canBeUnlockedInstantly(GameSession session) {
 		return false;
-	}
-	
-	@Override
-	@Deprecated
-	public String getUnableToLockpickMessage() {
-		return null;
 	}
 
 	@Override
