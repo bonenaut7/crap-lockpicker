@@ -10,6 +10,7 @@ import by.fxg.clp.registry.items.Item;
 import by.fxg.clp.registry.items.ItemResource;
 import by.fxg.clp.registry.items.ItemTool;
 import by.fxg.clp.registry.items.ItemTradeable;
+import by.fxg.clp.registry.merchant.Merchant;
 import by.fxg.clp.registry.merchant.MerchantCashier;
 import by.fxg.clp.registry.merchant.MerchantDevil;
 import by.fxg.clp.registry.merchant.MerchantHuckster;
@@ -39,6 +40,7 @@ public class GameRegistry {
 	public static final Array<ItemTradeable> MERCHANT_HUCKSTER_TRADE_POOL = new Array<>();
 	public static final Array<ItemTradeable> MERCHANT_DEVIL_TRADE_POOL = new Array<>();
 	
+	public static final Array<Merchant> REGISTERED_MERCHANTS = new Array<>();
 	public static MerchantCashier merchantCashier	 	= new MerchantCashier();
 	public static MerchantHuckster merchantHuckster	 	= new MerchantHuckster();
 	public static MerchantDevil merchantDevil		 	= new MerchantDevil();
@@ -87,6 +89,9 @@ public class GameRegistry {
 		
 		// Layout pools
 		LEVEL_LAYOUTS.addAll(layoutRitualSite);
+		
+		// Merchants ======================================================================================================================================
+		REGISTERED_MERCHANTS.addAll(merchantCashier, merchantHuckster, merchantDevil);
 		
 		// Locks ==========================================================================================================================================
 		REGISTERED_LOCKS.addAll(lockOpened, lockWrenchableQTE, lockWordCode, lockRadial, lockNumberCode);
